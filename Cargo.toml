@@ -1,0 +1,18 @@
+[package]
+name = "vectortile"
+version = "0.2.0"
+description = "Library for encoding Mapbox Vector Tiles"
+authors = ["Kevin Stenerson <kevin@rapiditynetworks.com>"]
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/rapiditynetworks/vectortile-rs"
+documentation = "https://docs.rs/vectortile"
+keywords = ["mapbox", "vector", "tile"]
+categories = ["encoding"]
+
+[lib]
+name = "vectortile"
+
+[dependencies]
+postgis = "0.4.0"
+protobuf = "1.2.2"
