@@ -12,7 +12,7 @@ Put this in your `Cargo.toml`:
 
 ```toml
 [dependencies]
-vectortile = "0.3.1"
+vectortile = "0.2.0"
 ```
 
 And this in your crate root:
@@ -22,7 +22,7 @@ extern crate vectortile;
 ```
 
 ## Example
-See the [streets example](examples/streets.rs) for a full example w/ PostGIS.
+See [examples/streets.rs](examples/streets.rs) for a full example w/ PostGIS.
 
 This example shows creating Features and Tiles programmatically:
 ```rust
