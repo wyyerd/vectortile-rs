@@ -35,13 +35,14 @@ use postgis::ewkb;
 let bbox = Extent{minx: 958826.08, miny: 5987771.04, maxx: 978393.96, maxy: 6007338.92};
 let mut tile = Tile::new(&bbox);
 let mut layer = Layer::new("place");
+tile.add_layer(layer);
+
+// Add a new point feature "Ed's Mospresso Shack"
 let geom: Geometry = ewkb::GeometryT::Point(Point::new(960000.0, 6002729.0, Some(3857)));
 let mut feature = Feature::new(geom);
 feature.add_property("place", Value::String(String::from("business")));
 feature.add_property("name", Value::String(String::from("Ed's Mospresso Shack")));
 layer.add_feature(feature);
-
-tile.add_layer(layer);
 
 // Encode the tile as protobuf and inspect it
 let grid = Grid::wgs84();
