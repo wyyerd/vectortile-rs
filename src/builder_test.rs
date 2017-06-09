@@ -1,4 +1,4 @@
-use {Tile, Layer, Feature, Value};
+use builder::{Tile, Layer, Feature, Value};
 use geom::{Geometry, Point};
 use grid::{Grid, Extent};
 use postgis::ewkb;
