@@ -1,6 +1,6 @@
 [package]
 name = "vectortile"
-version = "0.2.0"
+version = "0.2.1"
 description = "Library for encoding Mapbox Vector Tiles"
 authors = ["Kevin Stenerson <kevin@rapiditynetworks.com>"]
 license = "MIT"
