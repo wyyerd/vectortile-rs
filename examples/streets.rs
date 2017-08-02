@@ -30,6 +30,7 @@ fn main() {
     for row in rows.iter() {
         let mut feature = Feature::new(row.get(0));
         feature.set_id(row.get::<usize, i32>(1) as u64);
+        feature.add_property("name", Value::String(row.get(0)));
         layer.add_feature(feature);
     }
     tile.add_layer(layer);
@@ -37,7 +38,7 @@ fn main() {
     // Write the
     let encoded = tile.encode(&grid);
     let mut file = File::create("streets.mvt").unwrap();
-    encoded.to_writer(&mut file);
+    encoded.to_writer(&mut file).unwrap();
 
     // Inspect the tile
     println!("{:?}", encoded);

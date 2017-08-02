@@ -14,6 +14,6 @@ categories = ["encoding"]
 name = "vectortile"
 
 [dependencies]
-postgres = "0.14"
-postgis = "0.4.0"
-protobuf = "1.2.2"
+postgres = "^0.15"
+postgis = { git = "https://github.com/rapiditynetworks/rust-postgis.git" }
+protobuf = "^1.4"
