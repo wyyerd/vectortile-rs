@@ -15,5 +15,5 @@ name = "vectortile"
 
 [dependencies]
 postgres = "^0.15"
-postgis = { git = "https://github.com/rapiditynetworks/rust-postgis.git" }
+postgis = "^0.5"
 protobuf = "^1.4"
