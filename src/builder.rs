@@ -2,6 +2,7 @@ use geom_encoder::{encode_geometry, encode_geometry_type};
 use geom::Geometry;
 use grid;
 use proto;
+use std::borrow::Cow;
 
 #[derive(Debug)]
 pub struct Tile<'a> {
@@ -69,14 +70,16 @@ impl<'a> Tile<'a> {
 
 #[derive(Debug)]
 pub struct Layer<'a> {
-    name: &'a str,
+    name: Cow<'a, str>,
     features: Vec<Feature<'a>>,
 }
 
 impl<'a> Layer<'a> {
-    pub fn new<'b: 'a>(name: &'b str) -> Layer<'a> {
+    pub fn new<S>(name: S) -> Layer<'a>
+        where S: Into<Cow<'a, str>>
+    {
         Layer {
-            name: name,
+            name: name.into(),
             features: Vec::new(),
         }
     }
@@ -88,7 +91,7 @@ impl<'a> Layer<'a> {
 
 #[derive(Debug)]
 struct Property<'a> {
-    key: &'a str,
+    key: Cow<'a, str>,
     value: Value,
 }
 
@@ -112,9 +115,11 @@ impl<'a> Feature<'a> {
         self.id = Some(id);
     }
 
-    pub fn add_property<'b: 'a>(&mut self, key: &'b str, value: Value) {
+    pub fn add_property<S>(&mut self, key: S, value: Value)
+        where S: Into<Cow<'a, str>>
+    {
         self.properties.push(Property {
-            key: key,
+            key: key.into(),
             value: value,
         })
     }
