@@ -13,6 +13,8 @@ pub mod proto; // protoc --rust_out . proto.proto
 
 #[cfg(test)]
 mod builder_test;
+#[cfg(test)]
+mod geom_encoder_test;
 
 pub use builder::{Tile, Layer, Feature, Value};
 pub use encoder::{Decode, Encode};
