@@ -22,6 +22,10 @@ impl<'a> Tile<'a> {
         self.layers.push(layer);
     }
 
+    pub fn layers(&self) -> &[Layer<'a>] {
+        self.layers.as_slice()
+    }
+
     pub fn encode(self, grid: &grid::Grid) -> proto::Tile {
         let mut vec_tile = proto::Tile::new();
         for layer in self.layers.into_iter() {
@@ -31,7 +35,7 @@ impl<'a> Tile<'a> {
             vec_layer.set_extent(4096);
             for feature in layer.features.into_iter() {
                 let mut vec_feature = proto::Tile_Feature::new();
-                for property in feature.properties.into_iter() {
+                for property in feature.props.into_iter() {
                     let mut vec_value = proto::Tile_Value::new();
                     match property.value {
                         Value::String(ref v) => vec_value.set_string_value(v.clone()),
@@ -87,19 +91,23 @@ impl<'a> Layer<'a> {
     pub fn add_feature<'b: 'a>(&mut self, feature: Feature<'b>) {
         self.features.push(feature);
     }
+
+    pub fn features(&self) -> &[Feature<'a>] {
+        self.features.as_slice()
+    }
 }
 
 #[derive(Debug)]
-struct Property<'a> {
-    key: Cow<'a, str>,
-    value: Value,
+pub struct Property<'a> {
+    pub key: Cow<'a, str>,
+    pub value: Value,
 }
 
 #[derive(Debug)]
 pub struct Feature<'a> {
     id: Option<u64>,
     geom: Geometry,
-    properties: Vec<Property<'a>>,
+    props: Vec<Property<'a>>,
 }
 
 impl<'a> Feature<'a> {
@@ -107,7 +115,7 @@ impl<'a> Feature<'a> {
         Feature {
             id: None,
             geom: geom,
-            properties: Vec::new(),
+            props: Vec::new(),
         }
     }
 
@@ -118,10 +126,18 @@ impl<'a> Feature<'a> {
     pub fn add_property<S>(&mut self, key: S, value: Value)
         where S: Into<Cow<'a, str>>
     {
-        self.properties.push(Property {
+        self.props.push(Property {
             key: key.into(),
             value: value,
         })
+    }
+
+    pub fn geometry(&self) -> &Geometry {
+        &self.geom
+    }
+
+    pub fn properties(&self) -> &[Property] {
+        self.props.as_slice()
     }
 }
 
