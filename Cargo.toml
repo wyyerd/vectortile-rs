@@ -1,11 +1,11 @@
 [package]
 name = "vectortile"
-version = "0.2.2-dev"
+version = "0.2.2"
 description = "Library for encoding Mapbox Vector Tiles"
-authors = ["Kevin Stenerson <kevin@rapiditynetworks.com>"]
+authors = ["Kevin Stenerson <kstenerson@developers.wyyerd.com>"]
 license = "MIT"
 readme = "README.md"
-repository = "https://github.com/rapiditynetworks/vectortile-rs"
+repository = "https://github.com/wyyerd/vectortile-rs"
 documentation = "https://docs.rs/vectortile"
 keywords = ["mapbox", "vector", "tile"]
 categories = ["encoding"]
