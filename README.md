@@ -12,7 +12,7 @@ Put this in your `Cargo.toml`:
 
 ```toml
 [dependencies]
-vectortile = "0.2.1"
+vectortile = "0.2.2"
 ```
 
 And this in your crate root:
