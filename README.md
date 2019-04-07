@@ -5,7 +5,7 @@ vectortile-rs
 [![vectortile on docs.rs](https://docs.rs/vectortile/badge.svg)](https://docs.rs/vectortile)
 
 Rust library for building Mapbox Vector Tiles from PostGIS.
-This library was adapted from the MVT implementation in Pirmin Kalberer's [t-rex server](https://github.com/pka/t-rex), with changes intended to improve usage ergonamics.
+This library was adapted from the MVT implementation in Pirmin Kalberer's [t-rex server](https://github.com/pka/t-rex), with changes intended to improve usage ergonomics.
 
 ## Usage
 Put this in your `Cargo.toml`:
